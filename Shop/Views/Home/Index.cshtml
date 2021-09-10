@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listNewProduct = (List<Models.EntityFramework.Product>)ViewBag.NewProduct;
+    var listFeatureProduct = (List<Models.EntityFramework.Product>)ViewBag.ListFeatureProducts;
+}
+
+    <div class="header_bottom">
+        <div class="header_bottom_left">
+            <div class="section group">
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"> <img src="~/Assets/client/images/ps5.jfif" alt="" /></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h2>Playstation 5</h2>
+                        <p>Siêu Phẩm Console Thế Hệ Mới</p>
+                        <div class="button"><span><a href="#">Xem thêm</a></span></div>
+                    </div>
+                </div>
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="~/Assets/client/images/3615291-xbox-series-x-main-2-180x180.jpg" alt="" /></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h2>Xbox</h2>
+                        <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+                        <div class="button"><span><a href="#">Xem thêm</a></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section group">
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"> <img src="~/Assets/client/images/rtx-3080-170.jpg" alt="" /></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h2>Acer</h2>
+                        <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+                        <div class="button"><span><a href="#">Xem thêm</a></span></div>
+                    </div>
+                </div>
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="~/Assets/client/images/4kultra.jpg" alt="" /></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h2>Màn Hình</h2>
+                        <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+                        <div class="button"><span><a href="#">Xem thêm</a></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="header_bottom_right_images">
+            <!-- FlexSlider -->
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li><img src="~/Assets/client/images/playstation-5-77d37a0.jpg" alt="" /></li>
+                        <li><img src="~/Assets/client/images/vahala.jpg" alt="" /></li>
+                        <li><img src="~/Assets/client/images/GTA.jpg" alt="" /></li>
+                        <li><img src="~/Assets/client/images/xbox-series-x-s-console-hoyle-studio-promo-23.jpg" alt="" /></li>
+                    </ul>
+                </div>
+            </section>
+            <!-- FlexSlider -->
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="content">
+        <div class="content_top">
+            <div class="heading">
+                <h3>Sản Phẩm Bán Chạy</h3>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            @foreach (var item in listFeatureProduct)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                    <h2>@item.Name </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <p><span class="price">@(item.Price.HasValue?item.Price.Value.ToString("N0"):"Liên hệ")</span></p>
+                    <div class="button"><span><img src="~/Assets/client/images/cart.jpg" alt="" /><a href="/them-gio-hang?productId=@item.ID&quantity=1" class="cart-button">Thêm vào giỏ hàng</a></span> </div>
+
+                </div>
+            }
+
+        </div>
+        <div class="content_bottom">
+            <div class="heading">
+                <h3>Sản Phẩm Mới</h3>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            @foreach (var item in listNewProduct)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                    <h2>@item.Name </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <p><span class="price">@(item.Price.HasValue?item.Price.Value.ToString("N0"):"Liên hệ")</span></p>
+                    <div class="button"><span><img src="~/Assets/client/images/cart.jpg" alt="" /><a href="/them-gio-hang?productId=@item.ID&quantity=1" class="cart-button">Thêm vào giỏ hàng</a></span> </div>
+
+                </div>
+            }
+        </div>
+    </div>
